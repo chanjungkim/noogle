@@ -1,0 +1,14 @@
+body{
+    margin: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    min-width: 240px;
+}
+#title{
+    margin: 0px;
+    font-size: 20px;
+}
+
+#lang, #input{
+    margin: 5px;
+}

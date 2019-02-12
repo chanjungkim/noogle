@@ -1,0 +1,39 @@
+/* .container{
+    display: none;
+} */
+.column_left,.aside,.notice,.area_links,.column_bottom,.column_banner,._PM_timesquare_wrapper::after, .service_tab, .header, .btn_keyboard, .btn_keyboard_on, .sch_smit, .btn_arw, ._btn_arw, .fold{
+    visibility: hidden;
+}
+
+.wrap, #PM_ID_ct{
+    background: #FFFFFF;
+}
+.area_flex, .area_flex > *, .area_lgo{
+    position: relative;
+    display: inline-block;
+    margin:auto;
+    width:50%;
+    height: auto;
+}
+
+.search_btn{
+    position:relative;
+}
+.section_minime, #account{
+    position: relative;
+    left: 50%;
+    margin:auto;
+    width:50%;
+}
+
+.u_skip, .column_right{
+    display: none;
+}
+#search{
+    position: inherit;
+    left:0;
+    margin-top:0;
+    z-index: 1410065406;
+    margin:auto;
+    width: 50%;
+}
