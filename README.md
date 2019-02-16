@@ -5,7 +5,7 @@ Noogle - Clean Naver
 
 더군다나, 세상이 흉흉하여 부정적인 뉴스들과 댓글을 비롯한 여러 글이 활개를 치는 이 시점에서 그것에 관심도 없고 괜히 심기만 건들여 스트레스가 생기기도 합니다.
 
-Noogle은 Naver를 시작으로 깨끗한 유저 인터페이스를 제공하는 데에 기여를 하고자 만들어졌습니다.
+Noogle은 Naver를 시작으로 Google과 같이 깨끗한 유저 인터페이스를 제공하는 데에 기여를 하고자 만들어졌습니다.
 
 
 <image src="https://lh3.googleusercontent.com/oitXu-mvY8ckHsIlFFI6GkvPSkPzaDAyi-jus53m0ciMf3jnTpeqPQs-7isyN9hsFBQUGcZ9=w640-h400-e365"/>
