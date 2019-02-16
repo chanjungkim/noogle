@@ -7,6 +7,10 @@ Noogle - Clean Naver
 
 Noogle은 Naver를 시작으로 깨끗한 유저 인터페이스를 제공하는 데에 기여를 하고자 만들어졌습니다.
 
+
+<image src="https://lh3.googleusercontent.com/oitXu-mvY8ckHsIlFFI6GkvPSkPzaDAyi-jus53m0ciMf3jnTpeqPQs-7isyN9hsFBQUGcZ9=w640-h400-e365"/>
+
+
 여기서 다가 아닙니다.
 
 여러분의 생산성 증진을 위하여, 여러분의 목표 달성을 위하여 Noogle은 다양한 기능을 제공할 것입니다.
