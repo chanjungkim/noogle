@@ -1,5 +1,18 @@
 $(function () {
+    $('#NM_TOP_BANNER').remove();
+    $('.column_left').remove();
+    $('#NM_scroll_top_btn').remove();
+    $('#u_skip').remove();
+    $('#timesquare').remove();
+    $('#veta_branding').remove();
+    $('#shopcast').remove();
+    $('.banner_area').remove();
+    $('.notice_area').remove();
+    $('#gnb').remove();
+    $('.service_area').remove();
+    $('#footer').remove();
     // $('.container').remove();
+    /*
     $('.aside').remove();
     $('.notice').remove();
     $('.column_left').remove();
@@ -18,6 +31,7 @@ $(function () {
     $('.area_logo').after($('#search'));
     $('.area_logo, #search').css('width', '50%');
     $('.area_logo, #search').css('margin', 'auto');
+    */
     // $('.container').remove();
     // $('.footer').css('bottom', '0');
     // $('.footer').css('left', '0');
