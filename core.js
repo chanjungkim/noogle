@@ -33,11 +33,19 @@ function createMemoArea() {
     }
     memoContainer.appendChild(memoTextarea);
 
-    const resizer = createResizer();
-    memoContainer.appendChild(resizer);
-    makeElementResizable(resizer, memoContainer);
-
     document.body.appendChild(memoContainer);
+
+    // save size to localStorage when mouseup on container
+    memoContainer.addEventListener('mouseup', () => {
+        try {
+            localStorage.setItem('memo-pad-size', JSON.stringify({
+                width: getComputedStyle(memoContainer).getPropertyValue('width'),
+                height: getComputedStyle(memoContainer).getPropertyValue('height'),
+            }));
+        } catch (error) {
+            console.error('Error saving size:', error);
+        }
+    });
 }
 
 function createStyles() {
@@ -47,21 +55,19 @@ function createStyles() {
             position: fixed;
             top: 10px;
             left: 10px;
-            width: 300px;
-            height: 300px;
             border-radius: 5px;
             border: 1px solid #ccc;
             padding: 10px;
-            resize: both;
-            overflow: auto;
             z-index: 9999;
             background-color: #fdfd86;
             box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            resize: both;
+            overflow: auto;
         }
-        
+
         #memo-content {
             width: 100%;
-            height: 100%;
+            height: calc(100% - 20px); /* adjusting for handle */
             border: none;
             resize: none;
             background: transparent;
@@ -78,12 +84,24 @@ function createMemoContainer() {
     const memoContainer = document.createElement('div');
     memoContainer.id = 'memo-pad';
     memoContainer.classList.add('draggable', 'resizable');
+    memoContainer.style.resize = 'both';
+    memoContainer.style.overflow = 'auto';
     return memoContainer;
 }
 
 function createMemoTextarea() {
     const memoTextarea = document.createElement('textarea');
     memoTextarea.id = 'memo-content';
+    memoTextarea.style.resize = 'none'; // This will disable the textarea's default resizable property.
+    memoTextarea.style.overflow = 'auto';
+    memoTextarea.style.width = '100%';
+    memoTextarea.style.height = 'calc(100% - 20px)'; // minus the draggable handle height
+
+    const savedMemo = localStorage.getItem('memo');
+    if (savedMemo) {
+        memoTextarea.value = savedMemo;
+    }
+
     memoTextarea.addEventListener('input', () => {
         try {
             localStorage.setItem('memo', memoTextarea.value);
@@ -91,7 +109,9 @@ function createMemoTextarea() {
             console.error('Error saving memo:', error);
         }
     });
+
     memoTextarea.addEventListener('keydown', event => event.stopPropagation());
+
     return memoTextarea;
 }
 
@@ -99,16 +119,22 @@ function createDraggableHandle() {
     const handle = document.createElement('div');
     handle.style.width = '100%';
     handle.style.height = '20px';
-    handle.style.backgroundColor = '#ccc';
+    handle.style.backgroundColor = 'transparent';
     handle.style.cursor = 'move';
     handle.id = 'draggable-handle';
+
+    for (let i = 0; i < 3; i++) {
+        const line = document.createElement('div');
+        handle.appendChild(line);
+    }
+
     return handle;
 }
 
 function makeElementDraggable(element, container) {
     let pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
+        pos2 = 0
+    pos3 = 0,
         pos4 = 0;
 
     element.onmousedown = dragMouseDown;
@@ -144,48 +170,5 @@ function makeElementDraggable(element, container) {
     function closeDragElement() {
         document.onmouseup = null;
         document.onmousemove = null;
-    }
-}
-
-function createResizer() {
-    const resizer = document.createElement('div');
-    resizer.style.width = '10px';
-    resizer.style.height = '10px';
-    resizer.style.border = '1px solid #ccc';
-    resizer.style.position = 'absolute';
-    resizer.style.right = '0';
-    resizer.style.bottom = '0';
-    resizer.style.cursor = 'nw-resize';
-    resizer.id = 'resizer';
-    return resizer;
-}
-
-function makeElementResizable(element, container) {
-    element.onmousedown = initResize;
-
-    function initResize(e) {
-        e.preventDefault();
-        document.onmousemove = resize;
-        document.onmouseup = stopResize;
-    }
-
-    function resize(e) {
-        container.style.width = e.clientX - container.offsetLeft + 'px';
-        container.style.height = e.clientY - container.offsetTop + 'px';
-
-        try {
-            // Save size to localStorage
-            localStorage.setItem('memo-pad-size', JSON.stringify({
-                width: container.style.width,
-                height: container.style.height
-            }));
-        } catch (error) {
-            console.error('Error saving size:', error);
-        }
-    }
-
-    function stopResize() {
-        document.onmousemove = null;
-        document.onmouseup = null;
     }
 }
