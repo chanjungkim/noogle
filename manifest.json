@@ -1,7 +1,7 @@
 {
     "name": "Noogle - Clean Naver",
     "manifest_version": 3,
-    "version": "2.2",
+    "version": "2.3",
     "description": "Extension for cleaner Naver.",
     "permissions": [
         "contextMenus",
